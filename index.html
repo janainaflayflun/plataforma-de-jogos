@@ -1,1 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayFun - Plataforma de Jogos</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #151522;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #292940;
+    }
+
+    .topo {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #8b5cf6;
+    }
+
+    .moedas {
+      background: #242438;
+      padding: 9px 13px;
+      border-radius: 20px;
+      color: #ffd84d;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #6d28d9, #2563eb);
+      border-radius: 22px;
+      padding: 28px 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.3);
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #e9e9ff;
+      margin-bottom: 18px;
+    }
+
+    .botao {
+      border: none;
+      background: white;
+      color: #4c1d95;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    h2 {
+      margin: 25px 0 15px;
+    }
+
+    .jogos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #171725;
+      border: 1px solid #292940;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #8b5cf6;
+    }
+
+    .capa {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      background: linear-gradient(135deg, #312e81, #7c3aed);
+    }
+
+    .card-conteudo {
+      padding: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #aaaac0;
+      font-size: 14px;
+      margin-bottom: 13px;
+    }
+
+    .jogar {
+      width: 100%;
+      border: none;
+      background: #7c3aed;
+      color: white;
+      padding: 11px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .jogar:hover {
+      background: #8b5cf6;
+    }
+
+    .painel {
+      background: #171725;
+      border: 1px solid #292940;
+      padding: 20px;
+      border-radius: 18px;
+      margin-top: 25px;
+    }
+
+    .ranking div {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #292940;
+    }
+
+    .ranking div:last-child {
+      border-bottom: none;
+    }
+
+    .jogo-area {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,5,10,.96);
+      z-index: 100;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .jogo-box {
+      width: 100%;
+      max-width: 500px;
+      background: #171725;
+      border: 1px solid #393952;
+      border-radius: 22px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .jogo-box h2 {
+      margin-top: 0;
+    }
+
+    #alvo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: none;
+      background: #ef4444;
+      margin: 25px auto;
+      display: block;
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    #alvo:active {
+      transform: scale(.9);
+    }
+
+    .placar {
+      font-size: 22px;
+      color: #ffd84d;
+      margin: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 15px;
+      color: #77778e;
+    }
+
+    @media(max-width:600px) {
+      .hero h1 {
+        font-size: 27px;
+      }
+
+      main {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="topo">
+    <div class="logo">🎮 <span>Play</span>Fun</div>
+    <div class="moedas">🪙 <span id="moedas">100</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>Bem-vindo ao PlayFun!</h1>
+    <p>Jogue, divirta-se, acumule pontos e participe do ranking.</p>
+    <button class="botao" onclick="abrirJogo()">
+      ▶ Jogar agora
+    </button>
+  </section>
+
+  <h2>🔥 Jogos em destaque</h2>
+
+  <section class="jogos">
+
+    <div class="card">
+      <div class="capa">⚡</div>
+      <div class="card-conteudo">
+        <h3>Clique Rápido</h3>
+        <p>Clique o máximo que conseguir em 10 segundos.</p>
+        <button class="jogar" onclick="abrirJogo()">JOGAR</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="capa">🧠</div>
+      <div class="card-conteudo">
+        <h3>Desafio Mental</h3>
+        <p>Teste sua memória e raciocínio.</p>
+        <button class="jogar" onclick="alert('Este jogo estará disponível em breve!')">
+          EM BREVE
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="capa">🏆</div>
+      <div class="card-conteudo">
+        <h3>Desafio Diário</h3>
+        <p>Um novo desafio todos os dias.</p>
+        <button class="jogar" onclick="alert('O desafio diário estará disponível em breve!')">
+          EM BREVE
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="painel">
+    <h2>🏆 Ranking</h2>
+
+    <div class="ranking">
+      <div>
+        <span>🥇 Jogador Pro</span>
+        <strong>9.850</strong>
+      </div>
+
+      <div>
+        <span>🥈 Gamer Brasil</span>
+        <strong>8.720</strong>
+      </div>
+
+      <div>
+        <span>🥉 PlayMaster</span>
+        <strong>7.640</strong>
+      </div>
+
+      <div>
+        <span>🎮 Você</span>
+        <strong id="pontos">0</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="painel">
+    <h2>👤 Sua conta</h2>
+    <p>Jogador: <strong>Convidado</strong></p>
+    <p style="margin-top:8px;">Pontos: <strong id="pontos2">0</strong></p>
+    <p style="margin-top:8px;">Moedas: <strong id="moedas2">100</strong> 🪙</p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 PlayFun — Plataforma de Jogos
+</footer>
+
+<!-- JOGO -->
+
+<div class="jogo-area" id="jogoArea">
+
+  <div class="jogo-box">
+
+    <h2>⚡ Clique Rápido</h2>
+
+    <p>Clique no botão o máximo que conseguir!</p>
+
+    <div class="placar">
+      ⏱️ <span id="tempo">10</span>s
+      &nbsp;&nbsp;
+      🎯 <span id="cliques">0</span>
+    </div>
+
+    <button id="alvo" onclick="clicarAlvo()">⚡</button>
+
+    <button class="botao" onclick="fecharJogo()">
+      Fechar
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+  let moedas = 100;
+  let pontos = 0;
+  let cliques = 0;
+  let tempo = 10;
+  let intervalo;
+  let jogando = false;
+
+  function atualizarTela() {
+    document.getElementById("moedas").innerText = moedas;
+    document.getElementById("moedas2").innerText = moedas;
+    document.getElementById("pontos").innerText = pontos;
+    document.getElementById("pontos2").innerText = pontos;
+  }
+
+  function abrirJogo() {
+
+    document.getElementById("jogoArea").style.display = "flex";
+
+    cliques = 0;
+    tempo = 10;
+    jogando = true;
+
+    document.getElementById("cliques").innerText = cliques;
+    document.getElementById("tempo").innerText = tempo;
+
+    clearInterval(intervalo);
+
+    intervalo = setInterval(function() {
+
+      tempo--;
+
+      document.getElementById("tempo").innerText = tempo;
+
+      if (tempo <= 0) {
+
+        clearInterval(intervalo);
+        jogando = false;
+
+        let premio = cliques * 2;
+
+        pontos += cliques;
+        moedas += premio;
+
+        atualizarTela();
+
+        alert(
+          "🎉 Fim de jogo!\n\n" +
+          "Cliques: " + cliques +
+          "\nPontos ganhos: " + cliques +
+          "\nMoedas ganhas: " + premio
+        );
+      }
+
+    }, 1000);
+  }
+
+  function clicarAlvo() {
+
+    if (!jogando) return;
+
+    cliques++;
+
+    document.getElementById("cliques").innerText = cliques;
+  }
+
+  function fecharJogo() {
+
+    clearInterval(intervalo);
+    jogando = false;
+
+    document.getElementById("jogoArea").style.display = "none";
+  }
+
+  atualizarTela();
+
+</script>
+
+</body>
+  </html>
