@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlayFun - Plataforma de Jogos</title>
+
+  <title>PlayZone - Jogos Online</title>
+
+  <meta name="description" content="PlayZone - Plataforma de jogos online. Divirta-se com jogos rápidos e gratuitos.">
 
   <style>
     * {
@@ -13,222 +16,277 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #0b0b14;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #09001f, #16004a, #24006b);
       color: white;
       min-height: 100vh;
     }
 
+    /* CABEÇALHO */
     header {
-      background: #151522;
-      padding: 16px;
+      width: 100%;
+      padding: 18px 20px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid #292940;
     }
 
-    .topo {
+    .header-content {
       max-width: 1100px;
       margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 15px;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
+      color: #ffffff;
     }
 
     .logo span {
-      color: #8b5cf6;
+      color: #b85cff;
     }
 
-    .moedas {
-      background: #242438;
-      padding: 9px 13px;
+    .header-button {
+      border: none;
+      background: linear-gradient(135deg, #8a2be2, #ff3cac);
+      color: white;
+      padding: 10px 16px;
       border-radius: 20px;
-      color: #ffd84d;
       font-weight: bold;
+      cursor: pointer;
     }
 
+    /* CONTEÚDO */
     main {
       max-width: 1100px;
       margin: auto;
-      padding: 20px;
+      padding: 30px 18px 50px;
     }
 
     .hero {
-      background: linear-gradient(135deg, #6d28d9, #2563eb);
-      border-radius: 22px;
-      padding: 28px 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.3);
+      text-align: center;
+      padding: 25px 10px 35px;
     }
 
     .hero h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: clamp(32px, 8vw, 58px);
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #ffffff, #d48aff, #ff73c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      color: #e9e9ff;
+      color: #d9d3ed;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    /* CARDS */
+    .games-title {
+      font-size: 25px;
       margin-bottom: 18px;
     }
 
-    .botao {
-      border: none;
-      background: white;
-      color: #4c1d95;
-      padding: 13px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    h2 {
-      margin: 25px 0 15px;
-    }
-
-    .jogos {
+    .games {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
-    .card {
-      background: #171725;
-      border: 1px solid #292940;
-      border-radius: 18px;
-      overflow: hidden;
-      transition: .2s;
+    .game-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #8b5cf6;
-    }
-
-    .capa {
-      height: 130px;
+    .game-icon {
+      width: 70px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 55px;
-      background: linear-gradient(135deg, #312e81, #7c3aed);
+      border-radius: 18px;
+      font-size: 38px;
+      background: linear-gradient(135deg, #8a2be2, #ff3cac);
+      margin-bottom: 15px;
     }
 
-    .card-conteudo {
-      padding: 15px;
+    .game-card h3 {
+      font-size: 23px;
+      margin-bottom: 8px;
     }
 
-    .card h3 {
-      margin-bottom: 7px;
+    .game-card p {
+      color: #cfc8e8;
+      line-height: 1.5;
+      margin-bottom: 18px;
     }
 
-    .card p {
-      color: #aaaac0;
-      font-size: 14px;
-      margin-bottom: 13px;
-    }
-
-    .jogar {
+    .play-button {
       width: 100%;
+      padding: 14px;
       border: none;
-      background: #7c3aed;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8a2be2, #ff3cac);
       color: white;
-      padding: 11px;
-      border-radius: 10px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+      transition: transform 0.2s;
     }
 
-    .jogar:hover {
-      background: #8b5cf6;
+    .play-button:active {
+      transform: scale(0.97);
     }
 
-    .painel {
-      background: #171725;
-      border: 1px solid #292940;
-      padding: 20px;
-      border-radius: 18px;
-      margin-top: 25px;
-    }
-
-    .ranking div {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid #292940;
-    }
-
-    .ranking div:last-child {
-      border-bottom: none;
-    }
-
-    .jogo-area {
+    /* ÁREA DO JOGO */
+    #gameArea {
       display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(5,5,10,.96);
-      z-index: 100;
-      padding: 20px;
-      align-items: center;
-      justify-content: center;
+      margin-top: 30px;
     }
 
-    .jogo-box {
-      width: 100%;
-      max-width: 500px;
-      background: #171725;
-      border: 1px solid #393952;
-      border-radius: 22px;
-      padding: 25px;
+    .game-container {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 22px;
       text-align: center;
     }
 
-    .jogo-box h2 {
-      margin-top: 0;
+    .game-container h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
     }
 
-    #alvo {
-      width: 100px;
-      height: 100px;
+    .instructions {
+      color: #d7d0e9;
+      margin-bottom: 20px;
+    }
+
+    .score-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .score-box {
+      background: rgba(255,255,255,0.08);
+      border-radius: 15px;
+      padding: 12px 5px;
+    }
+
+    .score-box small {
+      display: block;
+      color: #bbb2d2;
+      margin-bottom: 5px;
+    }
+
+    .score-box strong {
+      font-size: 23px;
+    }
+
+    #clickGame {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      height: 380px;
+      margin: auto;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #13002d, #25005b);
+      border: 2px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    #target {
+      display: none;
+      position: absolute;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
       border: none;
-      background: #ef4444;
-      margin: 25px auto;
-      display: block;
+      background: linear-gradient(135deg, #ff3cac, #784ba0);
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 25px;
+      box-shadow: 0 0 25px rgba(255,60,172,0.7);
+      transform: translate(-50%, -50%);
     }
 
-    #alvo:active {
-      transform: scale(.9);
+    #startButton {
+      margin-top: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .placar {
-      font-size: 22px;
-      color: #ffd84d;
-      margin: 15px;
+    #backButton {
+      margin-top: 12px;
+      padding: 12px 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 13px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      cursor: pointer;
     }
 
+    .message {
+      min-height: 25px;
+      margin-top: 14px;
+      color: #e4d8ff;
+      font-weight: bold;
+    }
+
+    /* RODAPÉ */
     footer {
       text-align: center;
-      padding: 35px 15px;
-      color: #77778e;
+      padding: 25px 15px;
+      color: #aaa2bd;
+      font-size: 14px;
     }
 
-    @media(max-width:600px) {
-      .hero h1 {
-        font-size: 27px;
+    /* CELULAR */
+    @media (max-width: 600px) {
+      main {
+        padding-top: 15px;
       }
 
-      main {
-        padding: 15px;
+      .hero {
+        padding-top: 15px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      #clickGame {
+        height: 330px;
+      }
+
+      #target {
+        width: 60px;
+        height: 60px;
+      }
+
+      .score-box strong {
+        font-size: 20px;
       }
     }
   </style>
@@ -236,203 +294,418 @@
 
 <body>
 
-<header>
-  <div class="topo">
-    <div class="logo">🎮 <span>Play</span>Fun</div>
-    <div class="moedas">🪙 <span id="moedas">100</span></div>
-  </div>
-</header>
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="header-content">
+      <div class="logo">Play<span>Zone</span> 🎮</div>
+      <button class="header-button" onclick="scrollToGames()">
+        Jogar
+      </button>
+    </div>
+  </header>
 
-<main>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
 
-  <section class="hero">
-    <h1>Bem-vindo ao PlayFun!</h1>
-    <p>Jogue, divirta-se, acumule pontos e participe do ranking.</p>
-    <button class="botao" onclick="abrirJogo()">
-      ▶ Jogar agora
-    </button>
-  </section>
+    <section class="hero">
+      <h1>PlayZone</h1>
+      <p>
+        Jogos rápidos, divertidos e gratuitos.<br>
+        Escolha um jogo e comece a jogar!
+      </p>
+    </section>
 
-  <h2>🔥 Jogos em destaque</h2>
+    <h2 class="games-title">🎮 Jogos disponíveis</h2>
 
-  <section class="jogos">
+    <section class="games" id="games">
 
-    <div class="card">
-      <div class="capa">⚡</div>
-      <div class="card-conteudo">
+      <!-- JOGO CLIQUE RÁPIDO -->
+      <div class="game-card">
+        <div class="game-icon">⚡</div>
+
         <h3>Clique Rápido</h3>
-        <p>Clique o máximo que conseguir em 10 segundos.</p>
-        <button class="jogar" onclick="abrirJogo()">JOGAR</button>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="capa">🧠</div>
-      <div class="card-conteudo">
+        <p>
+          Teste sua velocidade! Clique no alvo o maior número
+          de vezes possível antes que o tempo acabe.
+        </p>
+
+        <button class="play-button" onclick="openClickGame()">
+          ▶ Jogar agora
+        </button>
+      </div>
+
+      <!-- JOGO EM BREVE -->
+      <div class="game-card">
+        <div class="game-icon">🧠</div>
+
         <h3>Desafio Mental</h3>
-        <p>Teste sua memória e raciocínio.</p>
-        <button class="jogar" onclick="alert('Este jogo estará disponível em breve!')">
-          EM BREVE
+
+        <p>
+          Coloque sua memória e raciocínio à prova.
+          Em breve na PlayZone.
+        </p>
+
+        <button class="play-button" onclick="comingSoon()">
+          🔒 Em breve
         </button>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="capa">🏆</div>
-      <div class="card-conteudo">
-        <h3>Desafio Diário</h3>
-        <p>Um novo desafio todos os dias.</p>
-        <button class="jogar" onclick="alert('O desafio diário estará disponível em breve!')">
-          EM BREVE
+      <!-- JOGO EM BREVE -->
+      <div class="game-card">
+        <div class="game-icon">🏆</div>
+
+        <h3>Desafio dos Pontos</h3>
+
+        <p>
+          Faça o maior número de pontos e tente bater
+          seus próprios recordes.
+        </p>
+
+        <button class="play-button" onclick="comingSoon()">
+          🔒 Em breve
         </button>
       </div>
-    </div>
 
-  </section>
+    </section>
 
-  <section class="painel">
-    <h2>🏆 Ranking</h2>
+    <!-- JOGO -->
+    <section id="gameArea">
 
-    <div class="ranking">
-      <div>
-        <span>🥇 Jogador Pro</span>
-        <strong>9.850</strong>
+      <div class="game-container">
+
+        <h2>⚡ Clique Rápido</h2>
+
+        <p class="instructions">
+          Clique no círculo o mais rápido que conseguir!
+        </p>
+
+        <div class="score-board">
+
+          <div class="score-box">
+            <small>Pontos</small>
+            <strong id="score">0</strong>
+          </div>
+
+          <div class="score-box">
+            <small>Tempo</small>
+            <strong id="time">10</strong>
+          </div>
+
+          <div class="score-box">
+            <small>Recorde</small>
+            <strong id="bestScore">0</strong>
+          </div>
+
+        </div>
+
+        <div id="clickGame">
+
+          <button id="target" onclick="hitTarget()">
+            ⚡
+          </button>
+
+        </div>
+
+        <button id="startButton" onclick="startGame()">
+          🚀 Começar jogo
+        </button>
+
+        <div class="message" id="message">
+          Clique em "Começar jogo" para iniciar.
+        </div>
+
+        <button id="backButton" onclick="closeClickGame()">
+          ← Voltar para os jogos
+        </button>
+
       </div>
 
-      <div>
-        <span>🥈 Gamer Brasil</span>
-        <strong>8.720</strong>
-      </div>
+    </section>
 
-      <div>
-        <span>🥉 PlayMaster</span>
-        <strong>7.640</strong>
-      </div>
+  </main>
 
-      <div>
-        <span>🎮 Você</span>
-        <strong id="pontos">0</strong>
-      </div>
-    </div>
-  </section>
+  <footer>
+    © 2026 PlayZone — Plataforma de Jogos Online
+  </footer>
 
-  <section class="painel">
-    <h2>👤 Sua conta</h2>
-    <p>Jogador: <strong>Convidado</strong></p>
-    <p style="margin-top:8px;">Pontos: <strong id="pontos2">0</strong></p>
-    <p style="margin-top:8px;">Moedas: <strong id="moedas2">100</strong> 🪙</p>
-  </section>
 
-</main>
+  <script>
 
-<footer>
-  © 2026 PlayFun — Plataforma de Jogos
-</footer>
+    /* =========================
+       VARIÁVEIS DO JOGO
+    ========================= */
 
-<!-- JOGO -->
+    let score = 0;
+    let timeLeft = 10;
+    let gameRunning = false;
+    let timer = null;
 
-<div class="jogo-area" id="jogoArea">
+    let bestScore = Number(
+      localStorage.getItem("playzoneBestScore") || 0
+    );
 
-  <div class="jogo-box">
+    document.getElementById("bestScore").textContent = bestScore;
 
-    <h2>⚡ Clique Rápido</h2>
 
-    <p>Clique no botão o máximo que conseguir!</p>
+    /* =========================
+       ABRIR JOGO
+    ========================= */
 
-    <div class="placar">
-      ⏱️ <span id="tempo">10</span>s
-      &nbsp;&nbsp;
-      🎯 <span id="cliques">0</span>
-    </div>
+    function openClickGame() {
 
-    <button id="alvo" onclick="clicarAlvo()">⚡</button>
+      const gameArea = document.getElementById("gameArea");
 
-    <button class="botao" onclick="fecharJogo()">
-      Fechar
-    </button>
+      gameArea.style.display = "block";
 
-  </div>
+      gameArea.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
 
-</div>
+      resetGame();
 
-<script>
+    }
 
-  let moedas = 100;
-  let pontos = 0;
-  let cliques = 0;
-  let tempo = 10;
-  let intervalo;
-  let jogando = false;
 
-  function atualizarTela() {
-    document.getElementById("moedas").innerText = moedas;
-    document.getElementById("moedas2").innerText = moedas;
-    document.getElementById("pontos").innerText = pontos;
-    document.getElementById("pontos2").innerText = pontos;
-  }
+    /* =========================
+       FECHAR JOGO
+    ========================= */
 
-  function abrirJogo() {
+    function closeClickGame() {
 
-    document.getElementById("jogoArea").style.display = "flex";
-
-    cliques = 0;
-    tempo = 10;
-    jogando = true;
-
-    document.getElementById("cliques").innerText = cliques;
-    document.getElementById("tempo").innerText = tempo;
-
-    clearInterval(intervalo);
-
-    intervalo = setInterval(function() {
-
-      tempo--;
-
-      document.getElementById("tempo").innerText = tempo;
-
-      if (tempo <= 0) {
-
-        clearInterval(intervalo);
-        jogando = false;
-
-        let premio = cliques * 2;
-
-        pontos += cliques;
-        moedas += premio;
-
-        atualizarTela();
-
-        alert(
-          "🎉 Fim de jogo!\n\n" +
-          "Cliques: " + cliques +
-          "\nPontos ganhos: " + cliques +
-          "\nMoedas ganhas: " + premio
-        );
+      if (gameRunning) {
+        stopGame();
       }
 
-    }, 1000);
-  }
+      document.getElementById("gameArea").style.display = "none";
 
-  function clicarAlvo() {
+      document.getElementById("games").scrollIntoView({
+        behavior: "smooth"
+      });
 
-    if (!jogando) return;
+    }
 
-    cliques++;
 
-    document.getElementById("cliques").innerText = cliques;
-  }
+    /* =========================
+       COMEÇAR JOGO
+    ========================= */
 
-  function fecharJogo() {
+    function startGame() {
 
-    clearInterval(intervalo);
-    jogando = false;
+      if (gameRunning) {
+        return;
+      }
 
-    document.getElementById("jogoArea").style.display = "none";
-  }
+      score = 0;
+      timeLeft = 10;
+      gameRunning = true;
 
-  atualizarTela();
+      document.getElementById("score").textContent = score;
+      document.getElementById("time").textContent = timeLeft;
 
-</script>
+      document.getElementById("message").textContent =
+        "🔥 Valendo! Clique no alvo!";
+
+      document.getElementById("startButton").textContent =
+        "⏱️ Jogo em andamento...";
+
+      document.getElementById("startButton").disabled = true;
+
+      showTarget();
+
+      timer = setInterval(function() {
+
+        timeLeft--;
+
+        document.getElementById("time").textContent =
+          timeLeft;
+
+        if (timeLeft <= 0) {
+          finishGame();
+        }
+
+      }, 1000);
+
+    }
+
+
+    /* =========================
+       CLICAR NO ALVO
+    ========================= */
+
+    function hitTarget() {
+
+      if (!gameRunning) {
+        return;
+      }
+
+      score++;
+
+      document.getElementById("score").textContent =
+        score;
+
+      showTarget();
+
+    }
+
+
+    /* =========================
+       MOSTRAR ALVO
+    ========================= */
+
+    function showTarget() {
+
+      const game = document.getElementById("clickGame");
+      const target = document.getElementById("target");
+
+      const gameWidth = game.clientWidth;
+      const gameHeight = game.clientHeight;
+
+      const targetSize = target.offsetWidth || 65;
+
+      const padding = targetSize / 2 + 5;
+
+      const x =
+        padding +
+        Math.random() *
+        (gameWidth - padding * 2);
+
+      const y =
+        padding +
+        Math.random() *
+        (gameHeight - padding * 2);
+
+      target.style.left = x + "px";
+      target.style.top = y + "px";
+      target.style.display = "block";
+
+    }
+
+
+    /* =========================
+       FINALIZAR JOGO
+    ========================= */
+
+    function finishGame() {
+
+      stopGame();
+
+      const target =
+        document.getElementById("target");
+
+      target.style.display = "none";
+
+      let message =
+        "⏰ Tempo esgotado! Você fez " +
+        score +
+        " pontos.";
+
+      if (score > bestScore) {
+
+        bestScore = score;
+
+        localStorage.setItem(
+          "playzoneBestScore",
+          bestScore
+        );
+
+        document.getElementById("bestScore").textContent =
+          bestScore;
+
+        message =
+          "🏆 NOVO RECORDE! Você fez " +
+          score +
+          " pontos!";
+
+      }
+
+      document.getElementById("message").textContent =
+        message;
+
+      document.getElementById("startButton").textContent =
+        "🔄 Jogar novamente";
+
+    }
+
+
+    /* =========================
+       PARAR JOGO
+    ========================= */
+
+    function stopGame() {
+
+      gameRunning = false;
+
+      if (timer !== null) {
+
+        clearInterval(timer);
+
+        timer = null;
+
+      }
+
+      document.getElementById("startButton").disabled =
+        false;
+
+    }
+
+
+    /* =========================
+       RESETAR JOGO
+    ========================= */
+
+    function resetGame() {
+
+      stopGame();
+
+      score = 0;
+      timeLeft = 10;
+
+      document.getElementById("score").textContent =
+        score;
+
+      document.getElementById("time").textContent =
+        timeLeft;
+
+      document.getElementById("message").textContent =
+        'Clique em "Começar jogo" para iniciar.';
+
+      document.getElementById("startButton").textContent =
+        "🚀 Começar jogo";
+
+      document.getElementById("target").style.display =
+        "none";
+
+    }
+
+
+    /* =========================
+       BOTÃO JOGAR DO CABEÇALHO
+    ========================= */
+
+    function scrollToGames() {
+
+      document.getElementById("games").scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================
+       JOGOS EM BREVE
+    ========================= */
+
+    function comingSoon() {
+
+      alert(
+        "🚀 Este jogo estará disponível em breve!"
+      );
+
+    }
+
+  </script>
 
 </body>
-  </html>
+</html>
